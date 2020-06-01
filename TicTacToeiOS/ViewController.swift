@@ -9,18 +9,31 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var messageLabel: UILabel!
     
+    var activePlayer = 1
+    
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var playAgainButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
     @IBAction func move(_ sender: UIButton) {
+        if activePlayer == 1 {
+            sender.setImage(UIImage(named: "Cross.png"), for: .normal)
+            activePlayer = 2
+        } else {
+            sender.setImage(UIImage(named: "Nought.png"), for: .normal)
+            activePlayer = 1
+
+        }
     }
     
 
     @IBAction func playAgainButtonPressed(_ sender: UIButton) {
+        
     }
 }
 
