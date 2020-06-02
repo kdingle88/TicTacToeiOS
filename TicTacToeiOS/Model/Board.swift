@@ -11,6 +11,8 @@ import Foundation
 struct Board {
     let turn: Icon
     let spots: [Icon]
+    let status: String
+    
     var legalMoves:[Int] {
         return spots.indices.filter { spots[$0] == .E }
     }
@@ -32,6 +34,7 @@ struct Board {
     init(spots:[Icon] = [.E, .E, .E, .E, .E, .E, .E, .E, .E], turn: Icon = .X) {
         self.spots = spots
         self.turn = turn
+        self.status = "\(turn.rawValue) turn to move"
     }
     
     func move(_ location: Int) -> Board {

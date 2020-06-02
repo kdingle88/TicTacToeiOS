@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var playAgainButton: UIButton!
-    
     @IBOutlet var spots: [UIButton]!
     
     override func viewDidLoad() {
@@ -24,32 +23,25 @@ class ViewController: UIViewController {
     }
     
     @IBAction func move(_ sender: UIButton) {
-        
-
-        if board.legalMoves.contains(sender.tag) {
+       
+        if board.legalMoves.contains(sender.tag) && !board.winner && !board.draw {
+            
             if board.turn == .X {
-                
                 sender.setImage(UIImage(named: "Cross.png"), for: .normal)
+            }
                 
-                messageLabel.text = "O turn to move"
-                board = board.move(sender.tag)
-                
-            } else {
-                
+            else {
                 sender.setImage(UIImage(named: "Nought.png"), for: .normal)
-                
-                messageLabel.text = "X turn to move"
-                
-                board = board.move(sender.tag)
             }
             
+             board = board.move(sender.tag)
+             messageLabel.text = board.status
+             checkForWinner()
+             checkForDraw()
+             
+            
+            
         }
-        if board.winner {
-            messageLabel.isHidden = false
-            messageLabel.text = "\(board.turn.opposite) wins the game!"
-            playAgainButton.isHidden = false
-        }
-        
     }
     
     
@@ -59,15 +51,43 @@ class ViewController: UIViewController {
     }
     
     func resetBoard() {
-        messageLabel.text = "X moves first!"
-        playAgainButton.isHidden = true
         board = Board()
+        messageLabel.text = board.status
+        playAgainButton.isHidden = true
+        
         
         for spot in spots {
             spot.setImage(nil, for: .normal)
         }
+        for spot in spots {
+            spot.isEnabled = true
+        }
     }
     
+    func checkForWinner() {
+        if board.winner {
+            messageLabel.isHidden = false
+            messageLabel.text = "\(board.turn.opposite) wins the game!"
+            playAgainButton.isHidden = false
+            
+            for spot in spots {
+                spot.isEnabled = false
+            }
+        }
+    }
+    
+    func checkForDraw() {
+        if board.draw {
+            messageLabel.isHidden = false
+            messageLabel.text = "Game is a draw!"
+            playAgainButton.isHidden = false
+            
+            for spot in spots {
+                spot.isEnabled = false
+            }
+            
+        }
+    }
    
 }
 
