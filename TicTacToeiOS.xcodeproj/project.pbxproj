@@ -14,6 +14,8 @@
 		4E4501A92485658200BD3F4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E4501A82485658200BD3F4E /* Assets.xcassets */; };
 		4E4501AC2485658200BD3F4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4501AA2485658200BD3F4E /* LaunchScreen.storyboard */; };
 		4E4501B72485658200BD3F4E /* TicTacToeiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4501B62485658200BD3F4E /* TicTacToeiOSTests.swift */; };
+		4E4501C22485892400BD3F4E /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4501C12485892400BD3F4E /* Icon.swift */; };
+		4E4501C42485912C00BD3F4E /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4501C32485912C00BD3F4E /* Board.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		4E4501B22485658200BD3F4E /* TicTacToeiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4501B62485658200BD3F4E /* TicTacToeiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeiOSTests.swift; sourceTree = "<group>"; };
 		4E4501B82485658200BD3F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E4501C12485892400BD3F4E /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		4E4501C32485912C00BD3F4E /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +85,9 @@
 			children = (
 				4E45019F2485657F00BD3F4E /* AppDelegate.swift */,
 				4E4501A12485657F00BD3F4E /* SceneDelegate.swift */,
-				4E4501A32485657F00BD3F4E /* ViewController.swift */,
-				4E4501A52485657F00BD3F4E /* Main.storyboard */,
+				4E4501C5248593AD00BD3F4E /* Model */,
+				4E4501C6248593FF00BD3F4E /* Controller */,
+				4E4501C72485942400BD3F4E /* View */,
 				4E4501A82485658200BD3F4E /* Assets.xcassets */,
 				4E4501AA2485658200BD3F4E /* LaunchScreen.storyboard */,
 				4E4501AD2485658200BD3F4E /* Info.plist */,
@@ -97,6 +102,31 @@
 				4E4501B82485658200BD3F4E /* Info.plist */,
 			);
 			path = TicTacToeiOSTests;
+			sourceTree = "<group>";
+		};
+		4E4501C5248593AD00BD3F4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4E4501C12485892400BD3F4E /* Icon.swift */,
+				4E4501C32485912C00BD3F4E /* Board.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4E4501C6248593FF00BD3F4E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4E4501A32485657F00BD3F4E /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4E4501C72485942400BD3F4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E4501A52485657F00BD3F4E /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +232,8 @@
 			files = (
 				4E4501A42485657F00BD3F4E /* ViewController.swift in Sources */,
 				4E4501A02485657F00BD3F4E /* AppDelegate.swift in Sources */,
+				4E4501C42485912C00BD3F4E /* Board.swift in Sources */,
+				4E4501C22485892400BD3F4E /* Icon.swift in Sources */,
 				4E4501A22485657F00BD3F4E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

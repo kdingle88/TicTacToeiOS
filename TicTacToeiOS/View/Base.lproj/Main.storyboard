@@ -15,14 +15,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="X is the winner!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UsD-zo-YOo">
-                                <rect key="frame" x="65" y="133" width="268" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2J-dS-ttC">
                                 <rect key="frame" x="104" y="717" width="171" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -36,81 +28,89 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Board" translatesAutoresizingMaskIntoConstraints="NO" id="Ym8-jE-t5B">
-                                <rect key="frame" x="-18" y="194" width="414" height="495"/>
+                                <rect key="frame" x="0.0" y="191" width="414" height="495"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SK5-id-bZk">
-                                <rect key="frame" x="139" y="394" width="100" height="100"/>
+                                <rect key="frame" x="157" y="391" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="Cross"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="move:" destination="BYZ-38-t0r" eventType="touchUpInside" id="55m-Qr-fcB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJY-FI-nuD">
-                                <rect key="frame" x="276" y="527" width="100" height="100"/>
+                                <rect key="frame" x="294" y="524" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="Cross"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="move:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RCG-tl-hDi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2o-Uy-5rk">
-                                <rect key="frame" x="139" y="527" width="100" height="100"/>
+                                <rect key="frame" x="157" y="524" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="Cross"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="move:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bZH-Wz-mde"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msx-aV-shi">
-                                <rect key="frame" x="2" y="527" width="100" height="100"/>
+                                <rect key="frame" x="20" y="524" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="Cross"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="move:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AnT-Eg-k0H"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohw-su-GQS">
-                                <rect key="frame" x="276" y="391" width="100" height="100"/>
+                                <rect key="frame" x="294" y="388" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="Cross"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="move:" destination="BYZ-38-t0r" eventType="touchUpInside" id="voD-sz-CA6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhz-IX-GgO">
-                                <rect key="frame" x="2" y="391" width="100" height="100"/>
+                                <rect key="frame" x="20" y="388" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="Cross"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="move:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A1e-WG-bqz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWp-83-d5e">
-                                <rect key="frame" x="276" y="252" width="100" height="100"/>
+                                <rect key="frame" x="294" y="249" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="Cross"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="move:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xrI-27-D2p"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f96-iV-ZaM">
-                                <rect key="frame" x="139" y="253" width="100" height="100"/>
+                                <rect key="frame" x="157" y="250" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="Cross"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="move:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HmP-VX-3N2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWC-fU-IhG">
-                                <rect key="frame" x="2" y="254" width="100" height="100"/>
+                                <rect key="frame" x="27" y="250" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="Cross"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="move:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H8s-cS-Vre"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="X moves first!" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="UsD-zo-YOo">
+                                <rect key="frame" x="69" y="140" width="241" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -118,6 +118,15 @@
                     <connections>
                         <outlet property="messageLabel" destination="UsD-zo-YOo" id="K7P-51-EiT"/>
                         <outlet property="playAgainButton" destination="F2J-dS-ttC" id="rir-Ig-KhL"/>
+                        <outletCollection property="spots" destination="JWC-fU-IhG" collectionClass="NSMutableArray" id="aWv-xN-ODM"/>
+                        <outletCollection property="spots" destination="f96-iV-ZaM" collectionClass="NSMutableArray" id="Lzm-sL-Y2F"/>
+                        <outletCollection property="spots" destination="pWp-83-d5e" collectionClass="NSMutableArray" id="ICX-xP-Whc"/>
+                        <outletCollection property="spots" destination="jhz-IX-GgO" collectionClass="NSMutableArray" id="Ba6-Jx-Cst"/>
+                        <outletCollection property="spots" destination="SK5-id-bZk" collectionClass="NSMutableArray" id="CK5-Wd-Mi4"/>
+                        <outletCollection property="spots" destination="Ohw-su-GQS" collectionClass="NSMutableArray" id="KpH-Q6-GsT"/>
+                        <outletCollection property="spots" destination="msx-aV-shi" collectionClass="NSMutableArray" id="6OL-T4-CsK"/>
+                        <outletCollection property="spots" destination="G2o-Uy-5rk" collectionClass="NSMutableArray" id="JuO-8l-1Yk"/>
+                        <outletCollection property="spots" destination="hJY-FI-nuD" collectionClass="NSMutableArray" id="xnR-Ff-B79"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -127,6 +136,5 @@
     </scenes>
     <resources>
         <image name="Board" width="1078" height="1068"/>
-        <image name="Cross" width="300" height="297"/>
     </resources>
 </document>
