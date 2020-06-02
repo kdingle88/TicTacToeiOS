@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var board = Board()
+    var game = Game()
     
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var playAgainButton: UIButton!
@@ -23,36 +23,28 @@ class ViewController: UIViewController {
     }
     
     @IBAction func move(_ sender: UIButton) {
-       
-        if board.legalMoves.contains(sender.tag) && !board.winner && !board.draw {
-            
-            if board.turn == .X {
-                sender.setImage(UIImage(named: "Cross.png"), for: .normal)
-            }
-                
-            else {
-                sender.setImage(UIImage(named: "Nought.png"), for: .normal)
-            }
-            
-             board = board.move(sender.tag)
-             messageLabel.text = board.status
-             checkForWinner()
-             checkForDraw()
-             
-            
-            
+        
+        
+        if game.legalMove(spot:sender.tag) {
+            sender.setImage(UIImage(named: game.turnIconImageText()), for: .normal)
+            game.getMove(spot:sender.tag)
         }
+        
+        messageLabel.text = game.getBoardStatus()
+        checkForWinner()
+        checkForDraw()
+        
     }
     
     
     @IBAction func playAgainButtonPressed(_ sender: UIButton) {
         resetBoard()
-
+        
     }
     
     func resetBoard() {
-        board = Board()
-        messageLabel.text = board.status
+        game.begin()
+        messageLabel.text = game.getBoardStatus()
         playAgainButton.isHidden = true
         
         
@@ -65,9 +57,9 @@ class ViewController: UIViewController {
     }
     
     func checkForWinner() {
-        if board.winner {
+        if game.getWinner() {
             messageLabel.isHidden = false
-            messageLabel.text = "\(board.turn.opposite) wins the game!"
+            messageLabel.text = "\(game.getTurn().opposite) wins the game!"
             playAgainButton.isHidden = false
             
             for spot in spots {
@@ -77,7 +69,7 @@ class ViewController: UIViewController {
     }
     
     func checkForDraw() {
-        if board.draw {
+        if game.getDraw() {
             messageLabel.isHidden = false
             messageLabel.text = "Game is a draw!"
             playAgainButton.isHidden = false
@@ -88,6 +80,6 @@ class ViewController: UIViewController {
             
         }
     }
-   
+    
 }
 

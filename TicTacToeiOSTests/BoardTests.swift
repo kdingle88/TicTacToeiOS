@@ -62,7 +62,7 @@ class BoardTests: XCTestCase {
         let testBoard = Board(spots:[.O, .X, .O, .X, .X, .O, .X, .O, .X])
         
         XCTAssertTrue(testBoard.spots == [.O, .X, .O, .X, .X, .O, .X, .O, .X])
-        XCTAssertTrue(testBoard.legalMoves == [])
+        XCTAssertTrue(testBoard.legalMoves.count == 0)
         XCTAssertFalse(testBoard.winner)
         XCTAssertTrue(testBoard.draw)
 

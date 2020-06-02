@@ -45,4 +45,6 @@ struct Board {
     }
     
     
+    
+    
 }
