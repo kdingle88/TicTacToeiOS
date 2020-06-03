@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     @IBAction func move(_ sender: UIButton) {
         
         if game.legalMove(spot: sender.tag) {
-            game.getMove(spot:sender.tag)
+            game.makeMove(spot:sender.tag)
             sender.setImage(UIImage(named: "Cross.png"), for: .normal)
             
             
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
                     
                     if let computerMove = self.game.getComputerMove() {
-                        self.game.getMove(spot:computerMove)
+                        self.game.makeMove(spot:computerMove)
                         self.spots[computerMove].setImage(#imageLiteral(resourceName: "Nought"), for: .normal)
                         self.messageLabel.text = self.game.getBoardStatus()
                         self.checkForWinner()

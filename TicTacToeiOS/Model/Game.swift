@@ -22,7 +22,6 @@ struct Game {
         
     }
     
-   
     
     func getBoardStatus() -> String {
         return board.status
@@ -44,7 +43,7 @@ struct Game {
         return board.draw
     }
     
-    mutating func getMove(spot:Int) {
+    mutating func makeMove(spot:Int) {
         board = board.move(spot)
     }
     
