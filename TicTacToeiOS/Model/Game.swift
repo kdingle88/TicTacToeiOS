@@ -22,15 +22,7 @@ struct Game {
         
     }
     
-    func turnIconImageText() -> String {
-        if board.turn == .X {
-            return "Cross.png"
-        }
-            
-        else {
-            return "Nought.png"
-        }
-    }
+   
     
     func getBoardStatus() -> String {
         return board.status
@@ -54,6 +46,11 @@ struct Game {
     
     mutating func getMove(spot:Int) {
         board = board.move(spot)
+    }
+    
+    func getComputerMove() -> Int? {
+        return board.legalMoves.randomElement()
+        
     }
     
 }

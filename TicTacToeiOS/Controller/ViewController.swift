@@ -24,16 +24,28 @@ class ViewController: UIViewController {
     
     @IBAction func move(_ sender: UIButton) {
         
-        
-        if game.legalMove(spot:sender.tag) {
-            sender.setImage(UIImage(named: game.turnIconImageText()), for: .normal)
+        if game.legalMove(spot: sender.tag) {
             game.getMove(spot:sender.tag)
+            sender.setImage(UIImage(named: "Cross.png"), for: .normal)
+            
+            
+            messageLabel.text = game.getBoardStatus()
+            checkForWinner()
+            checkForDraw()
+            
+            if !game.getWinner() {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    
+                    if let computerMove = self.game.getComputerMove() {
+                        self.game.getMove(spot:computerMove)
+                        self.spots[computerMove].setImage(#imageLiteral(resourceName: "Nought"), for: .normal)
+                        self.messageLabel.text = self.game.getBoardStatus()
+                        self.checkForWinner()
+                        self.checkForDraw()
+                    }
+                }
+            }
         }
-        
-        messageLabel.text = game.getBoardStatus()
-        checkForWinner()
-        checkForDraw()
-        
     }
     
     
