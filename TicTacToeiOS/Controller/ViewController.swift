@@ -33,15 +33,18 @@ class ViewController: UIViewController {
             checkForWinner()
             checkForDraw()
             
-            if !game.getWinner() {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                    
-                    if let computerMove = self.game.getComputerMove() {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                
+                if let computerMove = self.game.getComputerMove() {
+                    if self.game.legalMove(spot: computerMove) {
                         self.game.makeMove(spot:computerMove)
                         self.spots[computerMove].setImage(#imageLiteral(resourceName: "Nought"), for: .normal)
                         self.messageLabel.text = self.game.getBoardStatus()
                         self.checkForWinner()
                         self.checkForDraw()
+                        
+                        
                     }
                 }
             }
@@ -86,12 +89,15 @@ class ViewController: UIViewController {
             messageLabel.text = "Game is a draw!"
             playAgainButton.isHidden = false
             
+            
             for spot in spots {
                 spot.isEnabled = false
             }
             
         }
     }
+    
+    
     
 }
 

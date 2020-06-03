@@ -12,6 +12,7 @@ struct Board {
     let turn: Icon
     let spots: [Icon]
     let status: String
+    let lastMove: Int
     
     var legalMoves:[Int] {
         return spots.indices.filter { spots[$0] == .E }
@@ -31,17 +32,18 @@ struct Board {
         return !winner && legalMoves.count == 0
     }
     
-    init(spots:[Icon] = [.E, .E, .E, .E, .E, .E, .E, .E, .E], turn: Icon = .X) {
+    init(spots:[Icon] = [.E, .E, .E, .E, .E, .E, .E, .E, .E], turn: Icon = .X, lastMove: Int = -1) {
         self.spots = spots
         self.turn = turn
         self.status = "\(turn.rawValue) turn to move"
+        self.lastMove = lastMove
     }
     
     func move(_ location: Int) -> Board {
-    var oldSpots = spots
-    oldSpots[location] = turn
-    return Board(spots: oldSpots, turn: turn.opposite)
-    
+        var oldSpots = spots
+        oldSpots[location] = turn
+        return Board(spots: oldSpots, turn: turn.opposite, lastMove: location)
+        
     }
     
     
