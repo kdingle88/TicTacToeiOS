@@ -40,10 +40,12 @@ struct Board {
     }
     
     func move(_ location: Int) -> Board {
-        var oldSpots = spots
-        oldSpots[location] = turn
-        return Board(spots: oldSpots, turn: turn.opposite, lastMove: location)
+        let oldSpots = spots
         
+        let newSpots = oldSpots.enumerated().compactMap({ index,spot -> Icon in
+            index == location ? turn : spot
+        } )
+        return Board(spots: newSpots, turn: turn.opposite, lastMove: location)
     }
     
     

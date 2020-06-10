@@ -58,35 +58,41 @@ struct Game {
         else if board.draw { return 0 }
      
         if maximizingPlayer {
-            var maxEval = Int.min
-            for move in board.legalMoves {
+            let maxEval = Int.min
+            
+            let newMaxEval = board.legalMoves.map({ move -> Int in
                 let result = minimax(board.move(move), maximizingPlayer: false, player: player)
-                maxEval = max(result, maxEval)
-            }
-            return maxEval
+                return max(result, maxEval)
+            })
+            return newMaxEval.max() ?? maxEval
+            
         } else {
-            var minEval = Int.max
-            for move in board.legalMoves {
+            let minEval = Int.max
+            
+            let newMinEval = board.legalMoves.map({ move -> Int in
                 let result = minimax(board.move(move), maximizingPlayer: true, player: player)
-                minEval = min(result, minEval)
-            }
-            return minEval
+                return min(result, minEval)
+            })
+            
+            return newMinEval.min() ?? minEval
         }
     }
     
     
     func findBestMove(_ board: Board) -> Int {
-        var maxEval = Int.min
-        var bestMove = -1
-        for move in board.legalMoves {
-            let result = minimax(board.move(move), maximizingPlayer: false, player: board.turn)
-            if result > maxEval {
-                maxEval = result
-                bestMove = move
-            }
+        if board.legalMoves.count > 0 {
+        let evals = board.legalMoves.map({move -> Int in
+            return minimax(board.move(move), maximizingPlayer: false, player: board.turn)
+        })
+        
+        let maxEval = evals.max() ?? Int.min
+        
+        let maxEvalMoves = board.legalMoves.filter { minimax(board.move($0), maximizingPlayer: false, player: board.turn) == maxEval }
+        
+        
+        return maxEvalMoves[0]
+        } else {
+            return -1
         }
-        return bestMove
     }
-
-    
 }
