@@ -68,6 +68,33 @@ class BoardTests: XCTestCase {
         XCTAssertTrue(testBoard.draw)
 
     }
+    
+    func test_check_row_win() {
+        let spots:[Icon] = [.O, .O, .O, .X, .X, .E, .X, .E, .X]
+        let testBoard = Board(spots: spots)
+        
+        XCTAssertTrue(testBoard.checkRowWin())
+        XCTAssertFalse(testBoard.checkColumnWin())
+        XCTAssertFalse(testBoard.checkDiagonalWin())
+    }
+    
+    func test_check_column_win() {
+          let spots:[Icon] = [.O, .O, .X, .O, .X, .E, .O, .X, .X]
+          let testBoard = Board(spots: spots)
+          
+          XCTAssertFalse(testBoard.checkRowWin())
+          XCTAssertTrue(testBoard.checkColumnWin())
+          XCTAssertFalse(testBoard.checkDiagonalWin())
+      }
+    
+    func test_check_diagonal_win() {
+          let spots:[Icon] = [.O, .X, .X, .X, .O, .E, .O, .X, .O]
+          let testBoard = Board(spots: spots)
+          
+          XCTAssertFalse(testBoard.checkRowWin())
+          XCTAssertFalse(testBoard.checkColumnWin())
+          XCTAssertTrue(testBoard.checkDiagonalWin())
+      }
 
 
 }
