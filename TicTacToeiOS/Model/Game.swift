@@ -52,27 +52,29 @@ struct Game {
         
     }
     
-    func minimax(_ board: Board, maximizingPlayer: Bool, player: Icon) -> Int {
-        if board.winner && player == board.turn.opposite { return 1 }
-        else if board.winner && player != board.turn.opposite { return -1 }
-        else if board.draw { return 0 }
+    func minimax(_ board: Board, maximizingPlayer: Bool, player: Icon, depth: Int) -> Int {
+        if board.winner && player == board.turn.opposite || depth == 0 {
+            return 1
+        }
+        else if board.winner && player != board.turn.opposite || depth == 0 {
+            return -1
+        }
+        else if board.draw || depth == 0 {
+            return 0
+        }
      
         if maximizingPlayer {
             let maxEval = Int.min
             
-            let newMaxEval = board.legalMoves.map({ move -> Int in
-                let result = minimax(board.move(move), maximizingPlayer: false, player: player)
-                return max(result, maxEval)
-            })
+            let newMaxEval = board.legalMoves.map { max(minimax(board.move($0), maximizingPlayer: true, player: player, depth: -1), maxEval) }
+            
             return newMaxEval.max() ?? maxEval
             
         } else {
+            
             let minEval = Int.max
             
-            let newMinEval = board.legalMoves.map({ move -> Int in
-                let result = minimax(board.move(move), maximizingPlayer: true, player: player)
-                return min(result, minEval)
-            })
+            let newMinEval = board.legalMoves.map { min(minimax(board.move($0), maximizingPlayer: true, player: player, depth: -1), minEval) }
             
             return newMinEval.min() ?? minEval
         }
@@ -80,19 +82,15 @@ struct Game {
     
     
     func findBestMove(_ board: Board) -> Int {
-        if board.legalMoves.count > 0 {
-        let evals = board.legalMoves.map({move -> Int in
-            return minimax(board.move(move), maximizingPlayer: false, player: board.turn)
-        })
+        let evals = board.legalMoves.map { minimax(board.move($0), maximizingPlayer: false, player: board.turn, depth: 3) }
         
         let maxEval = evals.max() ?? Int.min
         
-        let maxEvalMoves = board.legalMoves.filter { minimax(board.move($0), maximizingPlayer: false, player: board.turn) == maxEval }
+        let maxEvalMoves:[Int] = board.legalMoves.filter { minimax(board.move($0), maximizingPlayer: false, player: board.turn, depth: 3) == maxEval }
         
+        let highestMoveEval = maxEvalMoves.max { a,b in a < b }
         
-        return maxEvalMoves[0]
-        } else {
-            return -1
-        }
+        return highestMoveEval ?? -1
+       
     }
 }
