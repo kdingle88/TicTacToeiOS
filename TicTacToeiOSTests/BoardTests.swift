@@ -23,11 +23,17 @@ class BoardTests: XCTestCase {
     }
     
     func test_move_no_winner() {
-        let newBoard = board.move(1)
+        let newBoard = board.move(0)
         let turn:Icon = .O
-        let spots:[Icon] = [.E, .X, .E, .E, .E, .E, .E, .E, .E]
+        let spots:[Icon] = [
+            .X, .E, .E, .E, .E,
+            .E, .E, .E, .E, .E,
+            .E, .E, .E, .E, .E,
+            .E, .E, .E, .E, .E,
+            .E, .E, .E, .E, .E
+        ]
         let status = "O turn to move"
-        let legalMoves = [0,2,3,4,5,6,7,8]
+        let legalMoves = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
         
         XCTAssertTrue(newBoard.turn == turn)
         XCTAssertTrue(newBoard.spots == spots)
@@ -35,15 +41,17 @@ class BoardTests: XCTestCase {
         XCTAssertTrue(newBoard.legalMoves == legalMoves)
         XCTAssertFalse(newBoard.winner)
         XCTAssertFalse(newBoard.draw)
-        XCTAssertTrue(newBoard.lastMove == 1)
+        XCTAssertTrue(newBoard.lastMove == 0)
     }
     
-    func test_move_winner() {
+    func test_board_winner() {
         let turn:Icon = .O
-        let spots: [Icon] = [.X, .X, .X, .E, .E, .O, .O, .E, .E]
-        let status = "O turn to move"
-        let legalMoves = [3,4,7,8]
-        
+        let spots:[Icon] = [
+            .X, .X, .X, .X, .X,
+            .O, .O, .O, .O, .E,
+            .E, .E, .E, .E, .E,
+            .E, .E, .E, .E, .E,
+            .E, .E, .E, .E, .E]
         
         let testBoard = Board(spots: spots, turn: .O)
 
@@ -51,14 +59,17 @@ class BoardTests: XCTestCase {
 
         XCTAssertTrue(testBoard.turn == turn)
         XCTAssertTrue(testBoard.spots == spots)
-        XCTAssertTrue(testBoard.status == status)
-        XCTAssertTrue(testBoard.legalMoves == legalMoves)
         XCTAssertTrue(testBoard.winner)
         XCTAssertFalse(testBoard.draw)
     }
     
-    func test_move_draw() {
-        let spots:[Icon] = [.O, .X, .O, .X, .X, .O, .X, .O, .X]
+    func test_board_draw() {
+        let spots:[Icon] = [
+        .X, .X, .X, .X, .O,
+        .O, .O, .O, .O, .X,
+        .X, .X, .X, .X, .O,
+        .O, .O, .O, .O, .X,
+        .X, .X, .X, .O, .O]
         let movesLeft = 0
         let testBoard = Board(spots: spots)
         
@@ -70,7 +81,12 @@ class BoardTests: XCTestCase {
     }
     
     func test_check_row_win() {
-        let spots:[Icon] = [.O, .O, .O, .X, .X, .E, .X, .E, .X]
+        let spots:[Icon] = [
+        .X, .X, .X, .X, .X,
+        .O, .O, .O, .O, .E,
+        .E, .E, .E, .E, .E,
+        .E, .E, .E, .E, .E,
+        .E, .E, .E, .E, .E]
         let testBoard = Board(spots: spots)
         
         XCTAssertTrue(testBoard.checkRowWin())
@@ -79,7 +95,12 @@ class BoardTests: XCTestCase {
     }
     
     func test_check_column_win() {
-          let spots:[Icon] = [.O, .O, .X, .O, .X, .E, .O, .X, .X]
+          let spots:[Icon] = [
+          .X, .X, .E, .E, .E,
+          .X, .O, .O, .O, .O,
+          .X, .E, .E, .E, .O,
+          .X, .E, .E, .E, .E,
+          .X, .E, .E, .E, .E]
           let testBoard = Board(spots: spots)
           
           XCTAssertFalse(testBoard.checkRowWin())
@@ -88,7 +109,12 @@ class BoardTests: XCTestCase {
       }
     
     func test_check_diagonal_win() {
-          let spots:[Icon] = [.O, .X, .X, .X, .O, .E, .O, .X, .O]
+          let spots:[Icon] = [
+          .X, .E, .E, .E, .E,
+          .O, .X, .O, .O, .O,
+          .E, .E, .X, .E, .E,
+          .E, .E, .E, .X, .E,
+          .E, .E, .E, .E, .X]
           let testBoard = Board(spots: spots)
           
           XCTAssertFalse(testBoard.checkRowWin())
