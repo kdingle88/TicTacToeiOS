@@ -25,7 +25,7 @@ struct Board {
         return !winner && legalMoves.count == 0
     }
     
-    init(spots:[Icon] = [.E, .E, .E, .E, .E, .E, .E, .E, .E], turn: Icon = .X, lastMove: Int = -1) {
+    init(spots:[Icon] = [.E, .E, .E, .E, .E, .E, .E, .E, .E,.E,.E,.E,.E,.E,.E,.E,.E,.E,.E,.E,.E,.E,.E,.E,.E], turn: Icon = .X, lastMove: Int = -1) {
         self.spots = spots
         self.turn = turn
         self.status = "\(turn.rawValue) turn to move"
@@ -42,9 +42,9 @@ struct Board {
         return Board(spots: newSpots, turn: turn.opposite, lastMove: location)
     }
     
-    func checkSet(set: (Icon,Icon,Icon)) -> Bool  {
+    func checkSet(set: (Icon,Icon,Icon,Icon,Icon)) -> Bool  {
         switch set {
-            case (.O,.O,.O), (.X,.X,.X):
+        case (.O,.O,.O,.O,.O), (.X,.X,.X,.X,.X):
                    return true
             default:
                 return false
@@ -52,23 +52,29 @@ struct Board {
     }
     
     func checkRowWin() -> Bool {
-        let row1 = checkSet(set:(spots[0],spots[1], spots[2]))
-        let row2 = checkSet(set:(spots[3],spots[4], spots[5]))
-        let row3 = checkSet(set:(spots[6],spots[7], spots[8]))
-        return row1 || row2 || row3
+        let row1 = checkSet(set:(spots[0],spots[1], spots[2], spots[3], spots[4]))
+        let row2 = checkSet(set:(spots[5],spots[6], spots[7], spots[8], spots[9]))
+        let row3 = checkSet(set:(spots[10],spots[11], spots[12], spots[13], spots[14]))
+        let row4 = checkSet(set:(spots[15],spots[16], spots[17], spots[18], spots[19]))
+        let row5 = checkSet(set:(spots[20],spots[21], spots[22], spots[23], spots[24]))
+        
+        
+        return row1 || row2 || row3 || row4 || row5
     }
     
     func checkColumnWin() -> Bool {
-           let column1 = checkSet(set:(spots[0],spots[3], spots[6]))
-           let column2 = checkSet(set:(spots[1],spots[4], spots[7]))
-           let column3 = checkSet(set:(spots[2],spots[5], spots[8]))
+           let column1 = checkSet(set:(spots[0],spots[5], spots[10],spots[15], spots[20]))
+           let column2 = checkSet(set:(spots[1],spots[6], spots[11],spots[16], spots[21]))
+           let column3 = checkSet(set:(spots[2],spots[7], spots[12],spots[17], spots[22]))
+           let column4 = checkSet(set:(spots[3],spots[8], spots[13],spots[18], spots[23]))
+           let column5 = checkSet(set:(spots[4],spots[9], spots[14],spots[19], spots[24]))
            
-           return column1 || column2 || column3
+           return column1 || column2 || column3 || column4 || column5
        }
     
     func checkDiagonalWin() -> Bool {
-           let diagonal1 = checkSet(set:(spots[0],spots[4], spots[8]))
-           let diagonal2 = checkSet(set:(spots[2],spots[4], spots[6]))
+           let diagonal1 = checkSet(set:(spots[0],spots[6], spots[12],spots[18], spots[24]))
+           let diagonal2 = checkSet(set:(spots[20],spots[16], spots[12],spots[8], spots[4]))
            
            return diagonal1 || diagonal2
        }
